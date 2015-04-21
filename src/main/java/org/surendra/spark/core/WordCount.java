@@ -22,7 +22,7 @@ public class WordCount {
 	 */
 	public static void main(String[] args) {
 		final JavaSparkContext sc = new JavaSparkContext("local", "WordCount");
-		final JavaRDD<String> lines = sc.textFile("/home/ig/Desktop/Ad Tracker/Spark.txt").cache();
+		final JavaRDD<String> lines = sc.textFile("/home/surendra/Sample/Spark.txt");
 
 		final JavaPairRDD<String, Integer> tuple = lines.flatMap(l -> Arrays.asList(l.split(" ")))
 				.mapToPair(w -> new Tuple2<String, Integer>(w, 1)).reduceByKey((a, b) -> a + b).sortByKey(); 
