@@ -16,7 +16,7 @@ import org.surendra.spark.entity.User;
 import com.mongodb.hadoop.MongoInputFormat;
 
 /**
- * Reading data from mongoDb using mongo-hadoop third party library
+ * Reading data in Spark from mongoDb using mongo-hadoop third party connector
  * 
  * @author surendra.singh
  *
@@ -28,7 +28,7 @@ public class MongoRead {
 	 */
 	public static void main(String[] args) {
 		/**
-		 * Hadoop Configuration to define mongoDB properties
+		 * Configuration to define mongoDB properties
 		 */
 		Configuration mongodbConfig = new Configuration();
 		
