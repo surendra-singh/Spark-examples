@@ -16,12 +16,12 @@ import org.surendra.spark.entity.User;
 import com.mongodb.hadoop.MongoInputFormat;
 
 /**
- * Reading data in Spark from mongoDb using mongo-hadoop third party connector
+ * Reading filter data from mongoDb in Spark
  * 
  * @author surendra.singh
  *
  */
-public class MongoRead {
+public class FilterMongoData {
 	
 	/**
 	 * @param args
@@ -41,7 +41,13 @@ public class MongoRead {
 		 * Set mongoDB input URI to - mongodb://<host-name>:<port>/<database>.<collection-name>
 		 */
 		mongodbConfig.set("mongo.input.uri", "mongodb://localhost:27017/test.user");
-
+		
+		/**
+		 * Set input query and fields to fetch from mongoDB in JSON format
+		 */
+		mongodbConfig.set("mongo.input.query", "{\"location\": \"India\"}");
+		mongodbConfig.set("mongo.input.fields", "{\"name\":1, \"age\":1}");
+		
 		SparkConf conf = new SparkConf().setMaster("local[*]").setAppName("Mango Data Read");
 		JavaSparkContext context = new JavaSparkContext(conf);
 
@@ -61,7 +67,6 @@ public class MongoRead {
 		JavaRDD<User> userRDD = documents.map(t -> {
 			User user = new User();
 			user.setName(t._2().get("name").toString());
-			user.setLocation(t._2().get("location").toString());
 			user.setAge((int) t._2().get("age"));
 			return user;
 		});
@@ -74,7 +79,6 @@ public class MongoRead {
 			System.out.println("**************************************************");
 			System.out.println("Name - " + user.getName());
 			System.out.println("Age - " + user.getAge());
-			System.out.println("Location - " + user.getLocation());
 		}
 		
 		context.close();

@@ -3,11 +3,13 @@
  */
 package org.surendra.spark.entity;
 
+import java.io.Serializable;
+
 /**
  * @author surendra.singh
  *
  */
-public class User {
+public class User implements Serializable {
 
 	private String name;
 	
