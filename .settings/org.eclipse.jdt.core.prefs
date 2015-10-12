@@ -1,9 +1,0 @@
-#Tue Apr 21 11:11:01 IST 2015
-encoding//src/test/java=${project.build.sourceEncoding}
-org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.8
-eclipse.preferences.version=1
-encoding//src/test/resources=${project.build.sourceEncoding}
-org.eclipse.jdt.core.compiler.source=1.8
-encoding//src/main/java=${project.build.sourceEncoding}
-encoding//src/main/resources=${project.build.sourceEncoding}
-org.eclipse.jdt.core.compiler.compliance=1.8
